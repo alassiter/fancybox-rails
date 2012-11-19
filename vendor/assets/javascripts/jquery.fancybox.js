@@ -671,11 +671,12 @@
 		},
 
 		_get_viewport = function() {
+			var isFixed = wrap.css('position') === 'fixed';
 			return [
 				$(window).width() - (currentOpts.margin * 2),
 				$(window).height() - (currentOpts.margin * 2),
-				$(document).scrollLeft() + currentOpts.margin,
-				$(document).scrollTop() + currentOpts.margin
+				(isFixed ? 0 : $(document).scrollLeft()) + currentOpts.margin,
+				(isFixed ? 0 : $(document).scrollTop()) + currentOpts.margin                
 			];
 		},
 
